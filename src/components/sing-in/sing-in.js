@@ -6,7 +6,7 @@ import {
   singInAuthUserWithEmailAndPassword,
 } from "../../services/firebase";
 import FormInput from "../form-input/form-input";
-import Button from "../button/button";
+import Button, { BUTTON_TYPE_CLASSES } from "../button/button";
 
 const defaultFormFields = {
   email: "",
@@ -79,7 +79,7 @@ export const SingInForm = () => {
 
         <div className="buttons-container">
           <Button type="submit">Sing In</Button>
-          <Button type='button' buttonType="google" onClick={signInWithGoogle}>
+          <Button type='button' buttonType={BUTTON_TYPE_CLASSES.google} onClick={signInWithGoogle}>
             Google sing in
           </Button>
         </div>
