@@ -7,15 +7,13 @@ import Checkout from "./routes/checkout/checkout";
 import Home from "./routes/home/home";
 import Navigation from "./routes/navigation/navigation";
 import Shop from "./routes/shop/shop";
-import {
-  getCurrentUser
-} from "./services/firebase";
+import { checkUserSession } from './store/user/user.action';
 
 const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    getCurrentUser().then((user) => console.log(user))
+      dispatch(checkUserSession())
   }, []);
 
   return (
