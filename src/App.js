@@ -7,13 +7,27 @@ import Checkout from "./routes/checkout/checkout";
 import Home from "./routes/home/home";
 import Navigation from "./routes/navigation/navigation";
 import Shop from "./routes/shop/shop";
-import { checkUserSession } from './store/user/user.action';
+import {
+  createUserDocumentFromAuth,
+  onAuthStateChangedListener,
+} from "./services/firebase";
+import { setCurrentUser } from "./store/user/user.reducer";
 
 const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-      dispatch(checkUserSession())
+    const unsubscribe = onAuthStateChangedListener((user) => {
+      if (user) {
+        createUserDocumentFromAuth(user);
+      }
+      const pickedUser =
+        user && (({ accessToken, email }) => ({ accessToken, email }))(user);
+        console.log(setCurrentUser(pickedUser))
+      dispatch(setCurrentUser(pickedUser));
+    });
+
+    return unsubscribe;
   }, []);
 
   return (

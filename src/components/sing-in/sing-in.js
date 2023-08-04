@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { emailSingInStart, googleSingInStart } from "../../store/user/user.action";
+import {
+  signInWithGooglePopup,
+  singInAuthUserWithEmailAndPassword,
+} from "../../services/firebase";
 import Button, { BUTTON_TYPE_CLASSES } from "../button/button";
 import FormInput from "../form-input/form-input";
 import "./sing-in.scss";
@@ -11,7 +13,6 @@ const defaultFormFields = {
 };
 
 export const SingInForm = () => {
-  const dispatch = useDispatch()
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
 
@@ -20,14 +21,14 @@ export const SingInForm = () => {
   };
 
   const signInWithGoogle = async () => {
-     dispatch(googleSingInStart())
+    await signInWithGooglePopup();
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      dispatch(emailSingInStart(email, password))
+      await singInAuthUserWithEmailAndPassword(email, password);
       resetFormFields();
     } catch (error) {
       switch (error.code) {
@@ -74,7 +75,11 @@ export const SingInForm = () => {
 
         <div className="buttons-container">
           <Button type="submit">Sing In</Button>
-          <Button type='button' buttonType={BUTTON_TYPE_CLASSES.google} onClick={signInWithGoogle}>
+          <Button
+            type="button"
+            buttonType={BUTTON_TYPE_CLASSES.google}
+            onClick={signInWithGoogle}
+          >
             Google sing in
           </Button>
         </div>
