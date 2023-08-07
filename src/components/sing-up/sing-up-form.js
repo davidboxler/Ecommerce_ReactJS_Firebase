@@ -5,7 +5,7 @@ import {
 } from "../../services/firebase";
 import Button from "../button/button";
 import FormInput from "../form-input/form-input";
-import './sing-up.scss';
+import "./sing-up.scss";
 
 const defaultFormFields = {
   displayName: "",
@@ -62,7 +62,7 @@ export const SingUpForm = () => {
           onChange={handleChange}
           name="displayName"
           value={displayName}
-        ></FormInput>
+        />
 
         <FormInput
           label="Email"
@@ -71,7 +71,7 @@ export const SingUpForm = () => {
           onChange={handleChange}
           name="email"
           value={email}
-        ></FormInput>
+        />
 
         <FormInput
           label="Password"
@@ -80,15 +80,16 @@ export const SingUpForm = () => {
           onChange={handleChange}
           name="password"
           value={password}
-        ></FormInput>
+        />
 
         <FormInput
+          label="Confirm Password"
           type="password"
           required
           onChange={handleChange}
           name="confirmPassword"
           value={confirmPassword}
-        ></FormInput>
+        />
 
         <Button type="submit">Sing Up</Button>
       </form>
