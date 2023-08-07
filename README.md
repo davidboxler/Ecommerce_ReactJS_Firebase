@@ -3,7 +3,7 @@
 
 <p>
 - Este proyecto resulta como proyecto de un curso realizado en Udemy, se trata de la construcción de una pagina web que funciona como ecommerce a modo de mostrar los productos de una tienda, separarlos por categorias, poder adquirirlos mediante una compra, poder registrarse en la misma pagina, enviar consultas. </p>
-<p> - Así mismo tambien el sitio está integrado con Firebase y valida las sesiones de los usurios y permite loguarse tanto por email como por Google, ademas se le incluyó el uso la stripe para simular pagos con tarjeta de credito. </p>
+<p> - Así mismo tambien el sitio está integrado con Firebase y valida las sesiones de los usuarios y permite loguearse tanto por email como por Google, además se le incluyó el uso de la plataforma Stripe para simular pagos con tarjeta de crédito. </p>
 <p> - El siguiente paso de este proyecto es sumarle TypeScript al codigo y ampliar el método de pago.</p>
 <img width="100%" src="https://github.com/davidboxler/ecommerce_ReactJS_Firebase/blob/master/public/ProyectoEcommerceReactRedux.png" alt="banner-ecommerce">
 
