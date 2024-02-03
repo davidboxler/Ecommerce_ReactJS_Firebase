@@ -1,4 +1,3 @@
-import React from "react";
 import { Outlet } from "react-router-dom";
 
 import { ReactComponent as Logo } from "../../assets/img/crown.svg";
