@@ -1,10 +1,12 @@
 import { AuthError, AuthErrorCodes } from "firebase/auth";
 import { ChangeEvent, FormEvent, useState } from "react";
 import { useDispatch } from "react-redux";
-import { signUpStart } from "../../store/user/user.action";
+
 import Button from "../button/button";
 import FormInput from "../form-input/form-input";
-import "./sing-up.styles";
+
+import { signUpStart } from "../../store/user/user.action";
+import { SignUpContainer } from './sing-up.styles';
 
 const defaultFormFields = {
   displayName: "",
@@ -13,7 +15,7 @@ const defaultFormFields = {
   confirmPassword: "",
 };
 
-export const SingUpForm = () => {
+const SingUpForm = () => {
   const dispatch = useDispatch()
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
@@ -49,7 +51,7 @@ export const SingUpForm = () => {
   };
 
   return (
-    <div className="sing-up-container">
+    <SignUpContainer>
       <h2>Don't have an account?</h2>
       <span>Sing up with email and password</span>
       <form onSubmit={handleSubmit}>
@@ -91,7 +93,7 @@ export const SingUpForm = () => {
 
         <Button type="submit">Sing Up</Button>
       </form>
-    </div>
+    </SignUpContainer>
   );
 };
 

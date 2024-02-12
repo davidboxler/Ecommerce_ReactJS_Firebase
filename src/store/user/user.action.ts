@@ -3,7 +3,7 @@ import {
   ActionWithPayload,
   createAction,
   withMatcher,
-} from '../../utils/reducer.utils';
+} from '../../utils/reducer/reducer.utils';
 import { USER_ACTION_TYPES } from './user.types';
 
 import { User } from 'firebase/auth';

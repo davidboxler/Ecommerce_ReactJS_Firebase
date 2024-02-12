@@ -6,8 +6,8 @@ import { BrowserRouter } from "react-router-dom";
 import { Elements } from "@stripe/react-stripe-js";
 import App from "./App";
 import "./index.scss";
-import { stripePromise } from "./services/stripe";
 import { store } from "./store/store";
+import { stripePromise } from "./utils/stripe/stripe";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 

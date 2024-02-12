@@ -6,6 +6,7 @@ import { selectCartItems } from "../../store/cart/cart.selector";
 import Button from "../button/button";
 import CartItem from "../cart-item/cart-item";
 
+import { useCallback } from "react";
 import {
   CartDropdownContainer,
   CartItems,
@@ -16,9 +17,9 @@ const CartDropdown = () => {
   const cartItems = useSelector(selectCartItems);
   const navigate = useNavigate();
 
-  const goToCheckout = () => {
+  const goToCheckoutHandler = useCallback(() => {
     navigate("/checkout");
-  };
+  }, [navigate]);
 
   return (
     <CartDropdownContainer>
@@ -29,7 +30,7 @@ const CartDropdown = () => {
           <EmptyMessage>Your car is empty</EmptyMessage>
         )}
       </CartItems>
-      <Button onClick={goToCheckout}>CHECKOUT</Button>
+      <Button onClick={goToCheckoutHandler}>CHECKOUT</Button>
     </CartDropdownContainer>
   );
 };
