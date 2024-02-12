@@ -1,18 +1,20 @@
-import React, { useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
+import { useDispatch } from "react-redux";
 import {
-  signInWithGooglePopup,
-  singInAuthUserWithEmailAndPassword,
+  signInWithGooglePopup
 } from "../../services/firebase";
+import { emailSignInStart } from "../../store/user/user.action";
 import Button, { BUTTON_TYPE_CLASSES } from "../button/button";
 import FormInput from "../form-input/form-input";
-import "./sing-in.scss";
+import "./sing-in.styles";
 
 const defaultFormFields = {
   email: "",
   password: "",
 };
 
-export const SingInForm = () => {
+const SingInForm = () => {
+  const dispatch = useDispatch();
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
 
@@ -24,27 +26,18 @@ export const SingInForm = () => {
     await signInWithGooglePopup();
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     try {
-      await singInAuthUserWithEmailAndPassword(email, password);
+      dispatch(emailSignInStart(email, password));
       resetFormFields();
     } catch (error) {
-      switch (error.code) {
-        case "auth/wrong-password":
-          alert("incorrect password for email");
-          break;
-        case "auth/user-not-found":
-          alert("no user associated with an email");
-          break;
-        default:
-          console.log(error);
-      }
+      console.log("user sing in failed", error);
     }
   };
 
-  const handleChange = (event) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
 
     setFormFields({ ...formFields, [name]: value });
