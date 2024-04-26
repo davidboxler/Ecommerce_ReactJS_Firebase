@@ -6,10 +6,6 @@ export const CategoryPreviewContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 30px;
-
-  @media screen and (max-width: 800px){
-    align-items: center;
-  }
 `;
 
 export const Title = styled(Link)`
@@ -23,13 +19,19 @@ export const Preview = styled.div`
   grid-template-columns: repeat(4, 1fr);
   column-gap: 20px;
 
+  @media screen and (max-width: 1100px){
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 15px;
+    grid-row-gap: 25px;
+  }
+
   @media screen and (max-width: 800px){
     grid-template-columns: 1fr 1fr;
     grid-column-gap: 15px;
     grid-row-gap: 25px;
   }
 
-  @media screen and (max-width: 400px){
+  @media screen and (max-width: 500px){
     grid-template-columns: 1fr;
     grid-row-gap: 25px;
   }

@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import { selectCartItems } from "../../store/cart/cart.selector";
@@ -7,6 +7,7 @@ import Button from "../button/button";
 import CartItem from "../cart-item/cart-item";
 
 import { useCallback } from "react";
+import { closeCart } from "../../store/cart/cart.action";
 import {
   CartDropdownContainer,
   CartItems,
@@ -15,11 +16,13 @@ import {
 
 const CartDropdown = () => {
   const cartItems = useSelector(selectCartItems);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const goToCheckoutHandler = useCallback(() => {
+    dispatch(closeCart());
     navigate("/checkout");
-  }, [navigate]);
+  }, [navigate, dispatch]);
 
   return (
     <CartDropdownContainer>

@@ -24,6 +24,13 @@ export const cartReducer = (
     };
   }
 
+  if (action.type === 'CLOSE_CART') {
+    return {
+      ...state,
+      isCartOpen: false, // establecer isCartOpen a false
+    };
+  }
+
   if (setCartItems.match(action)) {
     return {
       ...state,

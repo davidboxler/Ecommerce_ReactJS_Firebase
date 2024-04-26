@@ -6,6 +6,10 @@ import {
 import { CategoryItem } from '../categories/category.types';
 import { CART_ACTION_TYPES, CartItem } from './cart.types';
 
+export const closeCart = () => ({
+  type: 'CLOSE_CART',
+});
+
 const addCartItem = (
   cartItems: CartItem[],
   productToAdd: CategoryItem

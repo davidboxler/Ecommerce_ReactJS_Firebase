@@ -54,6 +54,10 @@ export const ProductCartContainer = styled.div`
       }
     }
   }
+  
+  @media screen and (max-width: 500px){
+    width: 75vw;
+  }
 
   @media screen and (max-width: 400px){
     width: 80vw;
