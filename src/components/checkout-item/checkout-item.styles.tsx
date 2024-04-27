@@ -22,6 +22,14 @@ export const ImageContainer = styled.div`
 
 export const BaseSpan = styled.span`
   width: 23%;
+
+  @media screen and (max-width: 800px) {
+    font-size: 18px;
+  }
+
+  @media screen and (max-width: 400px) {
+    font-size: 16px;
+  }
 `;
 
 export const Quantity = styled(BaseSpan)`
@@ -33,7 +41,7 @@ export const Arrow = styled.div`
 `;
 
 export const Value = styled.span`
-  margin: 0 10px;
+  margin: 3px 10px;
 `;
 
 export const RemoveButton = styled.div`
